@@ -1,3 +1,10 @@
 window.onload = function () {
-    chrome.runtime.sendMessage(chrome.runtime.id, "inZoom");
+    var startBtn = document.getElementById("startBtn");
+    startBtn.addEventListener("click", function () {
+        chrome.runtime.sendMessage(chrome.runtime.id, "startFocusManager");
+    });
+    var stopBtn = document.getElementById("stopBtn");
+    stopBtn.addEventListener("click", function () {
+        chrome.runtime.sendMessage(chrome.runtime.id, "stopFocusManager");
+    });
 };

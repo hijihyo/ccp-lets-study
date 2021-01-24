@@ -2,7 +2,7 @@
     "name": "Let's Study",
     "version": "1.0",
     "description": "Let's focus on online lectures",
-    "permissions": ["declarativeContent"],
+    "permissions": ["declarativeContent", "storage"],
     "background": {
         "page": "background/background.html",
         "persistent": false
