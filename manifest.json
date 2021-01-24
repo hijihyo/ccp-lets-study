@@ -1,0 +1,14 @@
+{
+    "name": "Let's Study",
+    "version": "1.0",
+    "description": "Let's focus on online lectures",
+    "permissions": ["declarativeContent"],
+    "background": {
+        "page": "background/background.html",
+        "persistent": false
+    },
+    "page_action": {
+        "default_popup": "popup/popup.html"
+    },
+    "manifest_version": 2
+}
