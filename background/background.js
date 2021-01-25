@@ -1,7 +1,7 @@
 var focusManager = new FocusManager();
 var fmInterval = null;
 
-var interval = 2000;
+var interval = 500;
 var hostList = ['zoom.us', 'www.youtube.com'];
 
 chrome.runtime.onInstalled.addListener(function () {
@@ -38,8 +38,8 @@ chrome.runtime.onInstalled.addListener(function () {
 });
 
 chrome.runtime.onMessage.addListener(function (msg, callback) {
-    if (typeof msg == "string") {
-        if (msg == "startFocusManager") {
+    if ('type' in msg && msg.type == "FocusManager") {
+        if ('action' in msg && msg.action == "start") {
             if (fmInterval != null) {
                 console.error("FocusManager Interval already exists");
                 return;
@@ -49,11 +49,11 @@ chrome.runtime.onMessage.addListener(function (msg, callback) {
                 _canvas = document.getElementById("canvas"),
                 _image = document.getElementById("image"),
             );
-            fmInterval = focusManager.startInterval({
-                _interval : interval
-            });
+            fmInterval = focusManager.startInterval(
+                _interval = interval
+            );
         }
-        else if (msg == "stopFocusManager") {
+        else if ('action' in msg && msg.action == "stop") {
             if (fmInterval == null) {
                 console.error("FocusManager Interval does not exist");
                 return;
@@ -63,9 +63,9 @@ chrome.runtime.onMessage.addListener(function (msg, callback) {
             fmInterval = null;
         }
     }
-    else if (typeof msg == "object") {
+    else if ('type' in msg && msg.type == "Storage") {
         if ('interval' in msg) {
-            chrome.storage.sync.set(msg, null);
+            chrome.storage.sync.set(msg.interval, null);
         }
         if ('newHost' in msg) {
             chrome.storage.sync.get(['hostList'], function(result) {

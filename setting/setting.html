@@ -3,20 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="setting.css" rel="stylesheet">
+    <link href="../bootstrap/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="setting.js"></script>
     <title>Setting</title>
 </head>
 <body>
-    <h1>Extension Setting</h1>
-    <div>
-        <h3>Interval for checking your status</h3>
-        <input type="number" id="interval">
-        <button id="intervalBtn">Save</button>
+    <h2>Setting</h2>
+    <label for="interval">Your status will be checked in every</label>
+    <div class="input-gruop mb-3">
+        <input type="number" id="interval" class="form-control">
+        <span class="input-group-text">ms</span>
+        <div class="space"></div>
+        <button id="intervalBtn" class="btn btn-secondary">Save</button>
     </div>
-    <div>
-        <h3>Host address where you want to concentrate</h3>
-        <input type="text" id="host">
-        <button id="hostBtn">Save</button>
+
+    <label for="host">Register a host address where to study</label>
+    <div class="input-gruop mb-3">
+        <input type="text" id="host" class="form-control">
+        <div class="space"></div>
+        <button id="hostBtn" class="btn btn-secondary">Save</button>
     </div>
+
+    <a href="../popup/popup.html">main page</a>
+
+    <script type="text/javascript" src="../jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
 </body>
 </html>

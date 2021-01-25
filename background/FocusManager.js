@@ -88,9 +88,12 @@ class FocusManager {
     }
 
     _detect() {
-        var faceDetector = new FaceDetector();
+        var faceDetector = new FaceDetector({
+            fastMode: true,
+            maxDetectedFaces: 1
+        });
         faceDetector.detect(this.image)
-            .then ((faces) => {
+            .then((faces) => {
                 if (this.firstError) {
                     this.firstError = false;
                     return;
@@ -105,7 +108,7 @@ class FocusManager {
                     alert("Focus on the lecture!");
                 }
             })
-            .catch ((e) => {
+            .catch((e) => {
                 console.error("FocusManager : error occurred : " + e);
             });
     }
@@ -129,5 +132,7 @@ class FocusManager {
         clearInterval(_fmInterval);
         this.video.srcObject.stop();
         this.video.pause();
+        this.firstError = true;
+        this.focus = false;
     }
 }
